@@ -9,25 +9,26 @@ String Expression::infixString(){
 }
 
 
-String Expression::prefixString(){
-	String s;
-	Node p = head; //p is parent
-	Node c = head; //c is child
+String Expression::prefixString(node n){
 
-	while(c.getNodeType() == EXPRESSION){
-		s += holder.print_operator();
-		c = c.getLeft();
+	If (n.getNodeType == VARIABLE){
 
+		return "x";
 	}
 
-	if (head.getNodeType() == VARIABLE){
-		s += "x";
-		head = head.getRight();
+	If (n.getNodeType == INTEGER){
+
+		return n.int_to_string();
 	}
 
+	If (n.getNodeType == EXPRESSION){
 
-
-	return s;
+		node L = n.getLeft();
+		node R = n.getRight();
+		n.printOperator();
+		prefixString(L);
+		prefixString(R);
+	}
 }
 
 String Expression::postfixString(){
