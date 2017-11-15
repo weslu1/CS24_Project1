@@ -4,72 +4,103 @@
 
 using namespace std;
 
-node List::getHead()
+Node* List::getHead()
 {
   return head;
 }
 
 
 void List:: expressionToList(string exp){
-
-  Node* current = new node;
+  Node* parent;
+  Node* current = new Node;
   head = current; //access list with this head                                                                                                                                                              
-  char* cursor;
+  
   for(int i = 0; i<exp.length(); i++){
-    cursor = exp[i];
-    if(*cursor == "("){
-      Node* parent = current;//create a parent node to access later                                                                                                                                         
-      Node* n = new node;
+    
+    if(exp[i] == '('){
+      parent = current;//create a parent node to access later                                                                                                                                         
+      Node* n = new Node;
       if(current->getLeft() == NULL)
-        current->getLeft() = n;
+        current->setLeft(n);
       else
-        current->getRight() = n;
-    }
-    current = n;
+        current->setLeft(n);
+
+      current = n;
+   }
+
+    
 
 
-    else if(*cursor == "+" || *cursor == "-" || *cursor == "*" || *cursor == "/")
+    else if(exp[i] == '+' || exp[i] == '-' || exp[i] == '*' || exp[i] == '/')
       {
-        if(*cursor == "+")
-          current->setData(PLUS);
-        if(*cursor == "-")
-          current->setData(MINUS));
-        if(*cursor == "*")
-          current->setData(MULT);
-        if(*cursor == "/")
-          current->setData(DIVIDE);
+        if(exp[i] == '+'){
+          current->setDataOP(PLUS);
+	  current->setNodeType(EXPRESSION);
+	}
+        if(exp[i] == '-'){
+          current->setDataOP(MINUS);
+	  current->setNodeType(EXPRESSION);
+	}
+        if(exp[i] == '*'){
+          current->setDataOP(MULT);
+	  current->setNodeType(EXPRESSION);
+	}
+        if(exp[i] == '/'){
+          current->setDataOP(DIVIDE);
+	  current->setNodeType(EXPRESSION);
+	}
       }
 
-    else if(*cursor == "x")
+    else if(exp[i] == 'x')
       {
-        current.getLeft() = "x";
+        current->getLeft()->setDataVAR('x');
+	current->setNodeType(VARIABLE);
       }
- else if(*cursor == "0" ||*cursor == "1" ||*cursor == "2" ||*cursor == "3" ||*cursor == "4" ||*cursor == "5" ||*cursor == "6" ||*cursor == "7" ||*cursor == "8" ||*cursor == "9")
+    else if(exp[i] == '0' ||exp[i] == '1' ||exp[i] == '2' ||exp[i] == '3' ||exp[i] == '4' ||exp[i] == '5' ||exp[i] == '6' ||exp[i] == '7' ||exp[i] == '8' ||exp[i] == '9')
       {
-        if(*cursor == "0")
-          current->getRight() = 0;
-        if(*cursor == "1")
-          current->getRight() = 1;
-        if(*cursor == "2")
-          current->getRight() = 2;
-        if(*cursor == "3")
-          current->getRight() = 3;
-        if(*cursor == "4")
-          current->getRight() = 4;
-        if(*cursor == "5")
-          current->getRight() = 5;
-        if(*cursor == "6")
-          current->getRight() = 6;
-        if(*cursor == "7")
-          current->getRight() = 7;
-        if(*cursor == "8")
-          current->getRight() = 8;
-        if(*cursor == "9")
-          current->getRight() = 9;
-
+        if(exp[i] == '0'){
+          current->getRight()->setDataVAL(0);
+	  current->setNodeType(INTEGER);
+	}
+        if(exp[i] == '1'){
+          current->getRight()->setDataVAL(1);
+	  current->setNodeType(INTEGER);
+	}
+        if(exp[i] == '2'){
+          current->getRight()->setDataVAL(2);
+	  current->setNodeType(INTEGER);
+	}
+        if(exp[i] == '3'){
+          current->getRight()->setDataVAL(3);
+	  current->setNodeType(INTEGER);
+	}
+        if(exp[i] == '4'){
+          current->getRight()->setDataVAL(4);
+	  current->setNodeType(INTEGER);
+	}
+        if(exp[i] == '5'){
+          current->getRight()->setDataVAL(5);
+	  current->setNodeType(INTEGER);
+	}
+        if(exp[i] == '6'){
+          current->getRight()->setDataVAL(6);
+	  current->setNodeType(INTEGER);
+	}
+        if(exp[i] == '7'){
+          current->getRight()->setDataVAL(7);
+	  current->setNodeType(INTEGER);
+	}
+	if(exp[i] == '8'){
+          current->getRight()->setDataVAL(8);
+	  current->setNodeType(INTEGER);
+	}
+        if(exp[i] == '9'){
+          current->getRight()->setDataVAL(9);
+	  current->setNodeType(INTEGER);
+	}
       }
 
-    else if(*cursor == ")")
+    else if(exp[i] == ')')
       {
         current = parent;
       }
