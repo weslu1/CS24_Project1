@@ -15,10 +15,10 @@ union data_type {
 class Node {
 	public:
 		// Constructor
-        Node(char var = 'x');
+        Node(char var);
         Node(operator_type op = PLUS, Node* operand1 = NULL, Node* operand2 = NULL);
-        Node(int val = 0);
-	Node();
+        Node(int val);
+	
         // Destructor
         ~Node();
       
