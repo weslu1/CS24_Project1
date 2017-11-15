@@ -1,6 +1,5 @@
-#include "node.cpp"
-#include "list.cpp"
-#include "Expression.cpp"
+
+#include "Expression.h"
 #include <iostream>
 
 class String{
@@ -8,7 +7,7 @@ class String{
   int main();
 
 
-}
+};
 
 
 
