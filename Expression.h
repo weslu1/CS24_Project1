@@ -1,12 +1,13 @@
 #ifndef EXPRESSION_H_
 #define EXPRESSION_H_
+#include "list.h"
 
 class Expression{
-public:
-	String infixString();
-	String prefixString(node n);
-	String postfixString();
+ public:
+  string infixString();
+  string prefixString(Node* n);
+  string postfixString();
 
-}
+};
 
 #endif /* EXPRESSION_H_ */
