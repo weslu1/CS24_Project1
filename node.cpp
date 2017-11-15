@@ -25,6 +25,7 @@ Node::Node(int val){
   this->node_t = INTEGER;
 }
 
+
 string Node::print_infix() const
 {
   if (node_t == VARIABLE){
@@ -100,7 +101,28 @@ Node* Node::getLeft(){
 Node* Node::getRight(){
 	return operand2;
 }
-void Node::setData(data_type d){
-	data = d;
+
+void Node::setDataOP(operator_type op){
+  data.op = op;
 }
 
+void Node::setDataVAL(int val)
+{
+  data.val=val;
+}
+
+void Node::setDataVAR(char var)
+{
+  data.var = var;
+}
+void Node::setLeft(Node* d){
+
+  operand1 = d;
+
+}
+
+void Node::setRight(Node* d){
+
+  operand2 = d;
+
+}
