@@ -126,3 +126,15 @@ void Node::setRight(Node* d){
   operand2 = d;
 
 }
+
+void Node::setNodeType(node_type z){
+
+  node_t = z;
+
+}
+node_type Node::getNodeType(){
+  
+  return node_t;
+
+}
+
