@@ -18,6 +18,7 @@ class Node {
         Node(char var = 'x');
         Node(operator_type op = PLUS, Node* operand1 = NULL, Node* operand2 = NULL);
         Node(int val = 0);
+	Node();
         // Destructor
         ~Node();
       
@@ -28,8 +29,13 @@ class Node {
         char print_operator() const;
 	Node* getLeft();
         Node* getRight();
-        void setData(data_type d);
-
+        void setDataOP(operator_type opd);
+	void setDataVAR(char var);
+	void setDataVAL(int val);
+	void setLeft(Node* d);
+	void setRight(Node* d);
+	
+	
 
     private:
         node_type node_t;
