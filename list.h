@@ -8,10 +8,10 @@ class List{
  public:
 
   void expressionToList(string exp);
-  node getHead();
+  Node* getHead();
 
  private:
-  node* head;
+  Node* head;
 };
 
 
