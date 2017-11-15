@@ -1,37 +1,37 @@
-#include <Expression.h>
-#include <List.h>
-#include <List.cpp>
+#include "Expression.h"
 #include <iostream>
 
 using namespace std;
 
-String Expression::infixString(){
+string Expression::infixString(){
 }
 
 
-String Expression::prefixString(node n){
+string Expression::prefixString(Node* n){
+       
+  if(n->getNodeType() == VARIABLE){
 
-	If (n.getNodeType == VARIABLE){
+    return "x";
+  }
 
-		return "x";
-	}
+  if(n->getNodeType() == INTEGER){
 
-	If (n.getNodeType == INTEGER){
+    return n->int_to_string();
+  }
 
-		return n.int_to_string();
-	}
+  if(n->getNodeType() == EXPRESSION){
 
-	If (n.getNodeType == EXPRESSION){
+    Node* L = n->getLeft();
+    Node* R = n->getRight();
+    n->print_operator();
+    prefixString(L);
+    prefixString(R);
 
-		node L = n.getLeft();
-		node R = n.getRight();
-		n.printOperator();
-		prefixString(L);
-		prefixString(R);
-	}
+   
+  }
 }
 
-String Expression::postfixString(){
+string Expression::postfixString(){
 
 
 }
