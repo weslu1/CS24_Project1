@@ -4,9 +4,9 @@
 
 class Expression{
  public:
-  string infixString();
-  string prefixString(Node* n);
-  string postfixString();
+  string infixString(List l, string in);
+  string prefixString(List l, string pre);
+  string postfixString(List l, string post);
 
 };
 
