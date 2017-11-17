@@ -3,35 +3,44 @@
 
 using namespace std;
 
-string Expression::infixString(){
+s#include "Expression.h"
+#include <iostream>
+
+using namespace std;
+
+Expression::Expression(){
+  string in = new string;
+  string pre = new string;
+  string post = new string;
+  n = NULL;
+}
+
+string Expression::infixString(List l, string in){
+  n = l.getHead();
+  
 }
 
 
-string Expression::prefixString(Node* n){
-       
-  if(n->getNodeType() == VARIABLE){
-
-    return "x";
+string Expression::prefixString(List l, string pre){
+  n = l.getHead();
+  if(n != NULL){
+    pre += (n ->getData());
+    prefixString(n ->getLeft(), pre);
+    prefixString(n ->getRight(), pre);
   }
-
-  if(n->getNodeType() == INTEGER){
-
-    return n->int_to_string();
-  }
-
-  if(n->getNodeType() == EXPRESSION){
-
-    Node* L = n->getLeft();
-    Node* R = n->getRight();
-    n->print_operator();
-    prefixString(L);
-    prefixString(R);
-
-   
-  }
+  return pre;
+  
 }
 
-string Expression::postfixString(){
+string Expression::postfixString(List l, string post){
+  n = l.getHead();
+  if (n != NULL){
+    postfixString(n ->getLeft(), post);
+    postfixString(n ->getRight(), post);
+    post += (n ->getData());
+  }
+  return post;
 
 
 }
+
